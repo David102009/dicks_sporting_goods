@@ -83,11 +83,18 @@ public class BaseClass {
 			e.printStackTrace();
 		}
 	}
-
 	public static String getProperty(String keyName) {
 		return configFile.getProperty(keyName);
 	}
 
-//			
+//	public static String getEmail(String email) {
+//		return configFile.getProperty(email);
+//	}
+//	
+//	public static String getPassword(String password) {
+//		return configFile.getProperty(password);
+//	}
+
+//  
 
 }
