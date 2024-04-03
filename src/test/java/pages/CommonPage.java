@@ -1,7 +1,7 @@
 package pages;
 
-import java.util.List;
 
+import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,7 +15,7 @@ public class CommonPage {
 	public CommonPage() {
 		PageFactory.initElements(BaseClass.getDriver(), this);
 	}
-	
+
 	@FindBy(xpath="//a[@title='Services']")
 	public WebElement selectServicesTab;
 	
@@ -39,6 +39,10 @@ public class CommonPage {
 		}
 	}
 	
-	
 
+	@FindBy(xpath="//div[@class='my-account-text hmf-display-flex hmf-align-content-center']")
+	public WebElement loginPageButton;
+	
+	@FindBy(xpath = "//*[@clip-path='url(#DSG_Logo_2024_svg__a)']")
+	public WebElement homeButton;
 }
