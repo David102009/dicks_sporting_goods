@@ -32,7 +32,7 @@ public class commonMethods extends PageInitializer {
 		element.clear();
 		element.sendKeys(text);
 	}
-
+	
 	public static void paolaWait(int seconds) {
 		try {
 			Thread.sleep(1000 * seconds);
@@ -269,8 +269,4 @@ public class commonMethods extends PageInitializer {
 		JavascriptExecutor js = (JavascriptExecutor) BaseClass.getDriver();
 		js.executeScript("arguments[0].scrollIntoView(true);", element);
 	}
-
-	
-
-
 }
