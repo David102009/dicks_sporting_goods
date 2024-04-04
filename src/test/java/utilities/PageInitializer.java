@@ -1,5 +1,7 @@
 package utilities;
 
+import pages.ShoesPage;
+import pages.SplashPage;
 import pages.CommonPage;
 import pages.PaolaMensAthleticAndSneakerPage;
 import pages.PaolaProductPage;
@@ -15,7 +17,6 @@ import pages.forgotYourPasswordPage;
 
 public class PageInitializer extends BaseClass{
 
-
 	public static PaolaProductPage pP;
 	public static PaolaMensAthleticAndSneakerPage maasP;
 	public static PaolaWomensLeggingsPage wlP;
@@ -28,8 +29,12 @@ public class PageInitializer extends BaseClass{
 	public static createAccountPage cAP ;
 	public static forgotYourPasswordPage fYP;
 	public static cartPage cOP;
+	public static ShoesPage shoesPage;
+	public static SplashPage splashPage;
 	
 	public static void initialize() {
+    shoesPage = new ShoesPage();
+		splashPage = new SplashPage();
 		cP = new CommonPage();
 		pP = new PaolaProductPage();
 		maasP = new PaolaMensAthleticAndSneakerPage();
@@ -43,6 +48,5 @@ public class PageInitializer extends BaseClass{
 		fYP = new forgotYourPasswordPage();
 		cOP = new cartPage();
   }
-
 
 }

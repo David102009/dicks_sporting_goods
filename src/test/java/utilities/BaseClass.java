@@ -51,7 +51,7 @@ public class BaseClass {
 		return driver;
 	}
 
-	@AfterTest
+//	@AfterTest
 	public static void teardDown() {
 		if (BaseClass.getDriver() != null) {
 			BaseClass.getDriver().close();
