@@ -1,14 +1,12 @@
 package utilities;
 
 import java.io.File;
-
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
-
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
@@ -32,7 +30,7 @@ public class commonMethods extends PageInitializer {
 		element.clear();
 		element.sendKeys(text);
 	}
-
+	
 	public static void paolaWait(int seconds) {
 		try {
 			Thread.sleep(1000 * seconds);
@@ -270,10 +268,10 @@ public class commonMethods extends PageInitializer {
 		js.executeScript("arguments[0].scrollIntoView(true);", element);
 	}
 
+
 	public static void clickByJS(WebElement element) {
 	    JavascriptExecutor js = (JavascriptExecutor) BaseClass.getDriver();
 	    js.executeScript("arguments[0].click();", element);
 	}
-
 
 }
