@@ -30,19 +30,57 @@ public class SneakerReleaseCalendarPage {
 	@FindBy(xpath="//span[@class='date-container d-flex flex-column text-center']")
 	 List<WebElement> dateElements;
 	
-	public boolean checkDatesNotBeforeCurrent() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd, yyyy", Locale.ENGLISH);
-        LocalDate currentDate = LocalDate.now();
-       
-        for (WebElement dateElement : dateElements) {
-            String dateText = dateElement.getText().replaceAll("\\r?\\n", ""); // Remove newline characters
-            LocalDate date = LocalDate.parse(dateText, formatter);
-            if (date.isBefore(currentDate)) {
-                return false;
-            }
-        }
+	@FindBy(xpath="//span[@class='date-number']")
+	public WebElement dayElement;
+	
+	@FindBy(xpath="//button[@id='slideoutCloseButton']")
+	public WebElement popUpWindow;
+	
+	@FindBy(xpath="//div[@class='filter-bar d-flex']")
+	public WebElement upcomingBar;
+	
+	
+	
+	
+	
+	
+	
+//	public boolean isTodayOrLaterDatePresent() {
+//	    // Get today's date
+//	    LocalDate today = LocalDate.now();
+//
+//	    // Check if any of the date elements contain today's date or a later date
+//	    for (WebElement dateElement : dateElements) {
+//	        // Parse the date from the element
+//	        String dateText = dateElement.getText().replaceAll("[^a-zA-Z0-9: ]", "");
+//	        LocalDate dateFromElement = LocalDate.parse(dateText, DateTimeFormatter.ofPattern("MMM dd hh:mm a z"));
+//	        // Compare with today's date
+//	        if (!dateFromElement.isBefore(today)) {
+//	            return true;
+//	        }
+//	    }
+//	    return false;
+//	}
+//	
+//	
 
-        return true;
-    }
+	
+	
+	
+	
+//	public boolean checkDatesNotBeforeCurrent() {
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd, yyyy", Locale.ENGLISH);
+//        LocalDate currentDate = LocalDate.now();
+//       
+//        for (WebElement dateElement : dateElements) {
+//            String dateText = dateElement.getText().replaceAll("\\r?\\n", ""); // Remove newline characters
+//            LocalDate date = LocalDate.parse(dateText, formatter);
+//            if (date.isBefore(currentDate)) {
+//                return false;
+//            }
+//        }
+//
+//        return true;
+//    }
 
 }

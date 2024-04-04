@@ -20,21 +20,11 @@ public class HomePageTest extends commonMethods {
 	@Test				//@Testcase2
 	public void ItemsShouldDisplayLatestDateInSneakerCalendar() {
 		cP.selectMainNavOption(BaseClass.getProperty("mainNavOption1"));
-		commonMethods.SMALL_WAIT();
-		sRCP.checkDatesNotBeforeCurrent();
+		commonMethods.scrollToElement(sRCP.upcomingBar);
+		sRCP.popUpWindow.click();
+		Assert.assertTrue(sRCP.dayElement.getText().contains("06"));//		
+//		sRCP.isTodayOrLaterDatePresent();
 	}
-	
-	
-	
-	/*
-	 * Items should displayed latest date In Sneaker Calendar Main navigation page. 
-1) Open the browser 
-2)Enter the URL “https://www.dickssportinggoods.com/” 
-3)Click on Sneaker Release Calendar Menu 
-4)The Items should display the date after the current date.
-	 */
-	
-	
 	
 	
 	
