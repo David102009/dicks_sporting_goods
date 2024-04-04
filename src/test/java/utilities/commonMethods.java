@@ -270,7 +270,10 @@ public class commonMethods extends PageInitializer {
 		js.executeScript("arguments[0].scrollIntoView(true);", element);
 	}
 
-	
+	public static void clickByJS(WebElement element) {
+	    JavascriptExecutor js = (JavascriptExecutor) BaseClass.getDriver();
+	    js.executeScript("arguments[0].click();", element);
+	}
 
 
 }
