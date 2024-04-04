@@ -1,15 +1,15 @@
 package testcases;
 
-import org.bouncycastle.util.Properties;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import utilities.BaseClass;
 import utilities.commonMethods;
 
-public class ogCreateAccount extends commonMethods{
-
+public class ogLogoutSuccessfully extends commonMethods {
+	
 	@Test
-	public void creatingAccount() {
+	public void logoutAndConfirm() {
 		commonMethods.click(cP.loginPageButton);
 		commonMethods.click(cAP.joinNow);
 		commonMethods.sendKeyDynamically(BaseClass.getProperty("email"), cAP.createAccEmail);
@@ -17,7 +17,10 @@ public class ogCreateAccount extends commonMethods{
 		commonMethods.TINY_WAIT();
 		commonMethods.click(cAP.joinNowButton);
 		commonMethods.click(cAP.saveProfile);
-		commonMethods.click(cAP.homeButton);
-		System.out.println("You are on the  " + BaseClass.getDriver().getTitle() +  " page.");
+		commonMethods.click(lOP.signOutButton);
+		Assert.assertEquals(BaseClass.getProperty("confirmSignout"), lOP.confirmSignedOut.getText());
+		System.out.println("Logged out , confirmation text is  = " + lOP.confirmSignedOut.getText());
+		
 	}
+	
 }
