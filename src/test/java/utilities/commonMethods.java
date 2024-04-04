@@ -158,7 +158,7 @@ public class commonMethods extends PageInitializer {
 	public static void alertGetText() {
 		// homework
 	}
-
+	
 	// switch iframe by index
 
 	public static void switchToIFrameByIndext(int iFrameIndex) {
@@ -170,11 +170,19 @@ public class commonMethods extends PageInitializer {
 	}
 
 	public static void switchToIFrameByElement(WebElement iframeElement) {
-		// homework
+		try {
+			BaseClass.getDriver().switchTo().frame(iframeElement);
+		} catch (NoSuchFrameException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void switchToIFrameByName(String iframeName) {
-		// homework
+		try {
+			BaseClass.getDriver().switchTo().frame(iframeName);
+		} catch (NoSuchFrameException e) {
+			e.printStackTrace();
+		}
 	}
 
 	//
@@ -214,6 +222,11 @@ public class commonMethods extends PageInitializer {
 	public static void click(WebElement element) {
 		waitForVisibility(element).click();
 	}
+	
+
+		
+	
+	
 
 	public static void sendKeyDynamically(String keys, WebElement element) {
 		waitForVisibility(element).sendKeys(keys);
