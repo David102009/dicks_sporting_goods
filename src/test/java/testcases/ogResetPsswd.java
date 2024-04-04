@@ -1,6 +1,5 @@
 package testcases;
 
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -13,7 +12,7 @@ public class ogResetPsswd extends commonMethods {
 		commonMethods.click(fYP.forgotPwd2());
 		commonMethods.sendKeyDynamically(BaseClass.getProperty("email"), cAP.createAccEmail);
 		commonMethods.click(fYP.continueButton());
-		Assert.assertTrue(fYP.confirmationText().getText().contains("for instructions to reset your password."));
+		Assert.assertEquals(BaseClass.getProperty("confirmationText"), fYP.confirmationText().getText());
 		System.out.println((fYP.confirmationText().getText()));
 	}
 }
