@@ -19,7 +19,7 @@ public class BaseClass {
 
 	// singleton class
 
-	private static WebDriver driver;
+	public static WebDriver driver;
 
 	@BeforeMethod
 	public static WebDriver getDriver() {
@@ -87,6 +87,34 @@ public class BaseClass {
 	}
 	public static String getProperty(String keyName) {
 		return configFile.getProperty(keyName);
+	}
+	
+	
+	private static Properties zuhraConfigFile;
+
+	// get 1stConfigFile.properties
+
+	static {
+		try {
+
+			// config reader function
+			String filePath = Constants.zuhraconfigProperty_filePath;
+			// open a connection to a file
+			FileInputStream inputStream = new FileInputStream(filePath);
+
+			// initializing config file to a Properties data type
+			zuhraConfigFile = new Properties();
+
+			// load config file
+			zuhraConfigFile.load(inputStream);
+			inputStream.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static String getMyProperty(String keyName) {
+		return zuhraConfigFile.getProperty(keyName);
 	}
 
 //	public static String getEmail(String email) {

@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -13,6 +14,8 @@ public class CommonPage {
 	public CommonPage() {
 		PageFactory.initElements(BaseClass.getDriver(), this);
 	}
+	
+    }
 
 	@FindBy(xpath="//a[@title='Services']")
 	public WebElement selectServicesTab;
@@ -59,3 +62,4 @@ public class CommonPage {
 	}
 	
 }
+
