@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.annotations.AfterTest;
@@ -28,7 +29,8 @@ public class BaseClass {
 
 			case "chrome":
 				WebDriverManager.chromedriver().setup();
-				driver = new ChromeDriver();
+                  driver = new ChromeDriver();
+				
 				break;
 			case "firefox":
 				WebDriverManager.firefoxdriver().setup();
@@ -51,7 +53,7 @@ public class BaseClass {
 		return driver;
 	}
 
-	@AfterTest
+//	@AfterTest
 	public static void teardDown() {
 		if (BaseClass.getDriver() != null) {
 			BaseClass.getDriver().close();
@@ -83,7 +85,6 @@ public class BaseClass {
 			e.printStackTrace();
 		}
 	}
-
 	public static String getProperty(String keyName) {
 		return configFile.getProperty(keyName);
 	}
@@ -116,6 +117,14 @@ public class BaseClass {
 		return zuhraConfigFile.getProperty(keyName);
 	}
 
-//			
+//	public static String getEmail(String email) {
+//		return configFile.getProperty(email);
+//	}
+//	
+//	public static String getPassword(String password) {
+//		return configFile.getProperty(password);
+//	}
+
+//  
 
 }
