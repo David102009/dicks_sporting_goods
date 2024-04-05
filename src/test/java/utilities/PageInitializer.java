@@ -14,6 +14,7 @@ import pages.SneakerReleaseCalendarPage;
 import pages.cartPage;
 import pages.createAccountPage;
 import pages.forgotYourPasswordPage;
+import pages.logOutPage;
 
 public class PageInitializer extends BaseClass{
 
@@ -25,12 +26,13 @@ public class PageInitializer extends BaseClass{
 	public static PickupAndDeliveryPage pAD;
 	public static ReturnsAndExchangesPage rE;
 	public static ServicesPage sP;
- 
+ public static CommonPage cP;
 	public static createAccountPage cAP ;
 	public static forgotYourPasswordPage fYP;
 	public static cartPage cOP;
 	public static ShoesPage shoesPage;
 	public static SplashPage splashPage;
+	public static logOutPage lOP;
 	
 	public static void initialize() {
     shoesPage = new ShoesPage();
@@ -47,6 +49,7 @@ public class PageInitializer extends BaseClass{
 		cAP = new createAccountPage();
 		fYP = new forgotYourPasswordPage();
 		cOP = new cartPage();
+		lOP = new logOutPage();
   }
 
 }
