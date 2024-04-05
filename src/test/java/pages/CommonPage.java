@@ -15,7 +15,7 @@ public class CommonPage {
 		PageFactory.initElements(BaseClass.getDriver(), this);
 	}
 	
-    }
+    
 
 	@FindBy(xpath="//a[@title='Services']")
 	public WebElement selectServicesTab;
