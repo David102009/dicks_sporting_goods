@@ -20,7 +20,7 @@ public class PageInitializer extends BaseClass{
 	public static PickupAndDeliveryPage pAD;
 	public static ReturnsAndExchangesPage rE;
 	public static ServicesPage sP;
-  public static CommonPage cP ;
+ 
 	public static createAccountPage cAP ;
 	public static forgotYourPasswordPage fYP;
 	public static cartPage cOP;
