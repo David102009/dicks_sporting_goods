@@ -7,10 +7,11 @@ import pages.SearchBarPage_z;
 import pages.ShoesPage;
 import pages.SplashPage;
 import pages.CommonPage;
+import pages.GoogleCalendarPage;
 import pages.PaolaMensAthleticAndSneakerPage;
+import pages.PaolaMensCrossTrainingShoesPage;
 import pages.PaolaProductPage;
 import pages.PaolaWomensLeggingsPage;
-import pages.GoogleCalendarPage;
 import pages.PickupAndDeliveryPage;
 import pages.ReturnsAndExchangesPage;
 import pages.ServicesPage;
@@ -34,6 +35,7 @@ public class PageInitializer extends BaseClass{
 	public static createAccountPage cAP ;
 	public static forgotYourPasswordPage fYP;
 	public static cartPage cOP;
+	public static PaolaMensCrossTrainingShoesPage mcsP;
 	public static ShoesPage shoesPage;
 	public static SplashPage splashPage;
 	public static logOutPage lOP;
@@ -41,7 +43,6 @@ public class PageInitializer extends BaseClass{
 	public static StorePage_z spZ;
 	public static SearchBarPage_z sbZ;
 	public static DeliveryPage_z dpZ;
-	
 	public static void initialize() {
     shoesPage = new ShoesPage();
 		splashPage = new SplashPage();
@@ -57,6 +58,7 @@ public class PageInitializer extends BaseClass{
 		cAP = new createAccountPage();
 		fYP = new forgotYourPasswordPage();
 		cOP = new cartPage();
+		mcsP = new  PaolaMensCrossTrainingShoesPage();
 		lOP = new logOutPage();
 		hpZ = new HomePage_z();
 		spZ = new StorePage_z();
