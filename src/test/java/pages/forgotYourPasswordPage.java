@@ -18,7 +18,7 @@ public class forgotYourPasswordPage {
 	}
 	
 	public static WebElement confirmationText() {
-		return BaseClass.getDriver().findElement(By.xpath("//p[contains(text(), 'for instructions to reset your password.')]"));
+		return BaseClass.getDriver().findElement(By.xpath("//p[@class='c3360ff4e c8fe48fda c9b2b9d32 c6d85c4fa c8fe48fda c1e1cb04b']"));
 	}
 	
 	public static WebElement forgotPwd2() {

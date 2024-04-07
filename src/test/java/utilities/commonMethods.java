@@ -1,14 +1,12 @@
 package utilities;
 
 import java.io.File;
-
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
-
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
@@ -158,7 +156,7 @@ public class commonMethods extends PageInitializer {
 	public static void alertGetText() {
 		// homework
 	}
-
+	
 	// switch iframe by index
 
 	public static void switchToIFrameByIndext(int iFrameIndex) {
@@ -170,11 +168,19 @@ public class commonMethods extends PageInitializer {
 	}
 
 	public static void switchToIFrameByElement(WebElement iframeElement) {
-		// homework
+		try {
+			BaseClass.getDriver().switchTo().frame(iframeElement);
+		} catch (NoSuchFrameException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void switchToIFrameByName(String iframeName) {
-		// homework
+		try {
+			BaseClass.getDriver().switchTo().frame(iframeName);
+		} catch (NoSuchFrameException e) {
+			e.printStackTrace();
+		}
 	}
 
 	//
@@ -214,6 +220,11 @@ public class commonMethods extends PageInitializer {
 	public static void click(WebElement element) {
 		waitForVisibility(element).click();
 	}
+	
+
+		
+	
+	
 
 	public static void sendKeyDynamically(String keys, WebElement element) {
 		waitForVisibility(element).sendKeys(keys);
@@ -269,4 +280,11 @@ public class commonMethods extends PageInitializer {
 		JavascriptExecutor js = (JavascriptExecutor) BaseClass.getDriver();
 		js.executeScript("arguments[0].scrollIntoView(true);", element);
 	}
+
+
+	public static void clickByJS(WebElement element) {
+	    JavascriptExecutor js = (JavascriptExecutor) BaseClass.getDriver();
+	    js.executeScript("arguments[0].click();", element);
+	}
+
 }
