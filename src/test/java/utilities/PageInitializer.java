@@ -1,10 +1,11 @@
 package utilities;
 
 import pages.CommonPage;
+import pages.GoogleCalendarPage;
 import pages.PaolaMensAthleticAndSneakerPage;
+import pages.PaolaMensCrossTrainingShoesPage;
 import pages.PaolaProductPage;
 import pages.PaolaWomensLeggingsPage;
-import pages.GoogleCalendarPage;
 import pages.PickupAndDeliveryPage;
 import pages.ReturnsAndExchangesPage;
 import pages.ServicesPage;
@@ -28,6 +29,7 @@ public class PageInitializer extends BaseClass{
 	public static createAccountPage cAP ;
 	public static forgotYourPasswordPage fYP;
 	public static cartPage cOP;
+	public static PaolaMensCrossTrainingShoesPage mcsP;
 	
 	public static void initialize() {
 		cP = new CommonPage();
@@ -42,6 +44,7 @@ public class PageInitializer extends BaseClass{
 		cAP = new createAccountPage();
 		fYP = new forgotYourPasswordPage();
 		cOP = new cartPage();
+		mcsP = new  PaolaMensCrossTrainingShoesPage();
   }
 
 
