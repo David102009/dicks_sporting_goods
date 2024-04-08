@@ -1,93 +1,83 @@
 package utilities;
 
 import java.io.FileInputStream;
-
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeMethod;
-
+import org.testng.annotations.BeforeTest;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseClass {
 
-	// singleton class
+    protected static WebDriver driver;
+    
+    public static WebDriver getDriver() {
+    	return driver;
+    	
+    }
 
-	private static WebDriver driver;
+   
+    public static void initializeDriver() {
+            switch (getProperty("browser")) {
+                case "chrome":
+                    WebDriverManager.chromedriver().setup();
+                    driver = new ChromeDriver();
+                    break;
+                case "firefox":
+                    WebDriverManager.firefoxdriver().setup();
+                    driver = new FirefoxDriver();
+                    break;
+                case "safari":
+                    WebDriverManager.safaridriver().setup();
+                    driver = new SafariDriver();
+                    break;
+            }
+            driver.get(getProperty("url"));
+            driver.manage().window().maximize();
+            driver.manage().timeouts().implicitlyWait(Constants.implicit_wait_time, TimeUnit.SECONDS);
+            PageInitializer.initialize();
+        }
 
-	@BeforeMethod
-	public static WebDriver getDriver() {
+    @AfterTest
+    public void tearDown() {
+        if (driver != null) {
+            driver.close();
+            driver.quit();
+            driver = null;
+        }
+    }
 
-		if (driver == null) {
-			switch (BaseClass.getProperty("browser")) {
+    private static Properties configFile;
+    private static Properties propertiesFaz;
 
-			case "chrome":
-				WebDriverManager.chromedriver().setup();
-				driver = new ChromeDriver();
-				break;
-			case "firefox":
-				WebDriverManager.firefoxdriver().setup();
-				driver = new FirefoxDriver();
-				break;
-			case "safari":
+    static {
+        try {
+            String configFilepath = Constants.configProperty_filePath;
+            FileInputStream inputStream = new FileInputStream(configFilepath);
+            configFile = new Properties();
+            configFile.load(inputStream);
+            inputStream.close();
 
-				WebDriverManager.safaridriver().setup();
-				driver = new SafariDriver();
-				break;
+            String fazFilePath = Constants.propertiesFazProperty_filePath;
+            inputStream = new FileInputStream(fazFilePath);
+            propertiesFaz = new Properties();
+            propertiesFaz.load(inputStream);
+            inputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-			}
-			driver.get(BaseClass.getProperty("url"));
-			driver.manage().window().maximize();
-			driver.manage().timeouts().implicitlyWait(Constants.implicit_wait_time, TimeUnit.SECONDS);
-			PageInitializer.initialize();
+    public static String getProperty(String keyName) {
+        return configFile.getProperty(keyName);
+    }
 
-		}
-
-		return driver;
+    public static String getMyProperty(String keyName) {
+        return propertiesFaz.getProperty(keyName);
+  
 	}
-
-	@AfterTest
-	public static void teardDown() {
-		if (BaseClass.getDriver() != null) {
-			BaseClass.getDriver().close();
-			BaseClass.getDriver().quit();
-			driver = null;
-		}
-	}
-
-	// declare properties file
-	private static Properties configFile;
-
-	// get 1stConfigFile.properties
-
-	static {
-		try {
-
-			// config reader function
-			String filePath = Constants.configProperty_filePath;
-			// open a connection to a file
-			FileInputStream inputStream = new FileInputStream(filePath);
-
-			// initializing config file to a Properties data type
-			configFile = new Properties();
-
-			// load config file
-			configFile.load(inputStream);
-			inputStream.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	public static String getProperty(String keyName) {
-		return configFile.getProperty(keyName);
-	}
-
-//			
-
 }
