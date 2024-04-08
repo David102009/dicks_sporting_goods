@@ -1,6 +1,10 @@
 package pages;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.List;
+import java.util.Locale;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -28,6 +32,9 @@ public class ShoesPage {
 	
 	@FindBy(xpath="//input[@placeholder='Search Brands']")
 	public WebElement BrandSerchBox;
+	
+	@FindBy(xpath="//div[@alt='Nike']/span")
+	public WebElement nikeCheckBox;
 	
 	@FindBy(xpath="//div[@id='facet_list_label_Product_Type']")
 	public WebElement ProductTypeText;
@@ -117,8 +124,15 @@ public class ShoesPage {
 	public List<WebElement> highToLowPrices;
 	
 	public double getPrice(WebElement priceElement) {
-	    String priceText = priceElement.getText().replaceAll("[^0-9.]", ""); // Remove non-numeric characters
-	    return Double.parseDouble(priceText); // Convert the price to a double
+	    String priceText = priceElement.getText().replaceAll("[^0-9,]", "").replace(",", ".");
+	    DecimalFormat format = (DecimalFormat) NumberFormat.getNumberInstance(Locale.US);
+	    format.setParseBigDecimal(true);
+	    try {
+	        return format.parse(priceText).doubleValue();
+	    } catch (ParseException e) {
+	        e.printStackTrace();
+	        return 0.0;
+	    }
 	}
 	@FindBy(xpath="//a[contains(text(),'Select a nearby store')]")
 	public WebElement selectANearByStore;
@@ -149,4 +163,20 @@ public class ShoesPage {
 	
 	@FindBy(xpath="//a[@class='dsg-react-inline-hyperlink ']")
 	public WebElement clearAllLink;
+	
+
+	
+	
+	
+	@FindBy(xpath ="//*[@class='find-a-store hmf-subheader-bold-l']")
+    public WebElement findAStoreButton;
+
+    @FindBy(xpath ="//div[contains(@class, 'store-selection-modal-search-input')]//input[@placeholder='Enter Zip code']")
+    public WebElement storeSearchBox;
+
+    @FindBy(xpath="//button[@aria-label='SEARCH']")
+    public WebElement storeSearchButton;
+
+    @FindBy(xpath = "//div[@class='store-selection-modal-header hmf-p-s hmf-mb-xxxs hmf-body-bold-l']")
+    public WebElement iframeStoreLocationBox;
 }
