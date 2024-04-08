@@ -1,10 +1,8 @@
 package testcases;
 
-
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import utilities.BaseClass;
 import utilities.commonMethods;
 
@@ -31,6 +29,10 @@ public class PaolaProductPageTest extends commonMethods {
 		
 		
 	}
+
+	@Test
+	public void topicsAndReviewsSearchbar() {
+		
 	@Test  //element not found in shadow dom
 	public void topicsAndReviewsSearchbar() {
 		commonMethods.click(cP.menCatagory);
@@ -95,11 +97,7 @@ public class PaolaProductPageTest extends commonMethods {
 				pP.reviewWhatCanWeDoToImproveShoeFitInput);
 		commonMethods.click(pP.reviewTermsAndConditionsCheckBox);
 		commonMethods.click(pP.postReviewButton);
+
 	}
-	
-	
-	
-	
-	
 	
 }
