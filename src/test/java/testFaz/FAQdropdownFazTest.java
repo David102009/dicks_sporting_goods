@@ -1,30 +1,29 @@
 package testFaz;
 
+import org.testng.annotations.Test;
+import pages.ContactUs;
 
-	import org.testng.annotations.Test;
-	import utilities.BaseClass;
-	import utilities.commonMethods;
+import utilities.CommonMethods;
 
-	public class FAQdropdownFazTest extends commonMethods {
-		
-	    
-	    @Test
-	    public void verifyFAQDropdownFunctionality() {
-	        // Navigate to Contact Us page
-	        commonMethods.click(cu.contactUsButton);
-	        
-	        // Click on the feedback tab to open the feedback
-	        commonMethods.click(cu.feedbackTab);
-	        
-	        // Click on each radio button option to select it
-	        commonMethods.click(cu.radioButtonOption1);
-	        // Verify that selecting a new radio button deselects the previously selected one
-	        commonMethods.verifyRadioButtonSelection(cu.radioButtonOption1);
-	        
-	        commonMethods.click(cu.radioButtonOption2);
-	        commonMethods.verifyRadioButtonSelection(cu.radioButtonOption2);
-	        
-	        // Add more radio button options if needed and repeat the above steps
-	        
-	    }
-	}
+public class FAQdropdownFazTest extends CommonMethods {
+    // Instantiate the ContactUs class
+    private ContactUs cu = new ContactUs();
+    
+    @Test
+    public void verifyFAQDropdownFunctionality() {
+        // Navigate to Contact Us page
+        cu.navigateToContactUsPage();
+        
+        // Click on the feedback tab to open the feedback
+        cu.clickFeedbackTab();
+        
+        // Click on each radio button option to select it
+        cu.clickRadioButtonOption1();
+        // Verify that selecting a new radio button deselects the previously selected one
+        cu.verifyRadioButtonSelection1(ContactUs.radioButtonOption1);
+        
+        cu.clickRadioButtonOption2();
+        cu.verifyRadioButtonSelection1(ContactUs.radioButtonOption2);
+    
+    }
+}

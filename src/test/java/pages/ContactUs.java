@@ -7,7 +7,9 @@ import utilities.BaseClass;
 
 public class ContactUs {
     
-    @FindBy(xpath = "//*[@class='dsg-react-button secondary']")
+    public static final String radioButtonOption1 = null;
+
+	@FindBy(xpath = "//*[@class='dsg-react-button secondary']")
     public WebElement contactUsButton;
     
     @FindBy(xpath = "//*[@id=\"nebula_div_btn\"]/div[2]")
@@ -21,9 +23,8 @@ public class ContactUs {
 
     @FindBy(xpath = "//*[@id=\"ScoreCard\"]/div/a/div/p")
 	public WebElement scorecardIcon;
-	
-    
-    // Other page elements can be declared here
+
+	public static String radioButtonOption2;
     
     public ContactUs() {
         PageFactory.initElements(BaseClass.getDriver(), this);
@@ -43,7 +44,25 @@ public class ContactUs {
     }
 
 	public boolean isFeedbackFormDisplayed() {
-		// TODO Auto-generated method stub
 		return false;
+	}
+
+	public void navigateToContactUsPage() {
+		
+	}
+
+	public void clickRadioButtonOption1() {
+		
+	}
+public void clickRadioButtonOption2() {
+		
+	}
+
+	public void verifyRadioButtonSelection1(String radiobuttonoption1) {
+		
+	}
+	public void verifyRadioButtonSelection2(String radiobuttonoption2) {
+		
+		
 	}
 }

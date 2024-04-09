@@ -24,6 +24,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 public class CommonMethods extends PageInitializer {
+	
+	    public static void click1(WebElement element) {
+	        waitForVisibility(element).click();
+	    }
+
+	    // New method to verify page title accuracy
+	    public static void checkTitleAccuracy(String expectedTitle) {
+	        String actualTitle = BaseClass.getDriver().getTitle();
+	        Assert.assertEquals(actualTitle, expectedTitle, "Page title mismatch");
+	    }
 
     public static void sendKey(WebElement element, String text) {
         element.clear();
